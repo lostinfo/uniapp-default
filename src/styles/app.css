@@ -1,0 +1,137 @@
+page {
+  background-color: #F8F8F8;
+  --default-bg-color: #FFE303;
+  --default-bg-color-rgba: rgba(255, 227, 3, .2);
+  --default-text-color: #010000;
+  --default-text-light-color: #FFFFFF;
+}
+
+.cu-form-group .title {
+  min-width: calc(5em + 15px);
+}
+
+.line-default::after,
+.lines-default::after {
+  border-color: var(--default-bg-color);
+}
+
+.bg-default {
+  background-color: var(--default-bg-color);
+  color: #010000;
+}
+
+.bg-default.light {
+  color: var(--default-bg-color);
+  background-color: var(--default-text-light-color);
+}
+
+.shadow[class*="-default"] {
+  box-shadow: 3px 3px 4px var(--default-text-light-color);
+}
+
+.text-shadow[class*="-default"] {
+  text-shadow: 3px 3px 4px var(--default-text-light-color);
+}
+
+.text-default,
+.line-default,
+.lines-default {
+  color: var(--default-bg-color);
+}
+
+.text-666 {
+  color: #666666;
+}
+
+.text-link {
+  color: #4466AD;
+}
+
+.bg-light-grey {
+  background-color: #F8F8F8;
+  color: #333333;
+}
+
+
+.full-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1100;
+  transition: all 0.3s ease-in-out 0s;
+  display: none;
+}
+
+.full-modal.show {
+  display: block;
+  transition-duration: 0.3s;
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+.line-two {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.empty-wrap {
+  padding: 100rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-wrap .empty-image {
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.empty-wrap .empty-text {
+  font-size: 28rpx;
+  line-height: 1.7em;
+  color: #666666;
+}
+
+.full-modal .content {
+  width: 100%;
+  height: calc(100% - 150rpx);
+  padding-top: 120rpx;
+}
+
+.full-modal .action {
+  height: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-modal .action .action-btn {
+  width: 360rpx;
+  height: 80rpx;
+  background: #018EE6;
+  border-radius: 7rpx;
+  font-size: 33rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.transparent-btn {
+  background-color: transparent;
+  border: unset;
+  padding: 0;
+  margin: 0;
+  line-height: unset;
+}
+
+.transparent-btn:before, .transparent-btn:after {
+  border: unset;
+}
