@@ -1,7 +1,8 @@
 <script>
 import Vue from 'vue'
+
 export default {
-  onLaunch: function() {
+  onLaunch: function () {
     console.log('App Launch')
     let that = this
     uni.getSystemInfo({
@@ -12,7 +13,7 @@ export default {
           Vue.prototype.CustomBar = e.statusBarHeight + 50;
         } else {
           Vue.prototype.CustomBar = e.statusBarHeight + 45;
-        };
+        }
         // #endif
 
         // #ifdef MP-WEIXIN || MP-QQ
@@ -32,15 +33,15 @@ export default {
         Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight;
         // #endif
 
-        that.$store.commit('setSystemInfo', e)
+        that.$store.commit('common/setSystemInfo', e)
       }
     })
-    that.$store.dispatch('autoLogin')
+    that.$store.dispatch('auth/autoLogin')
   },
-  onShow: function() {
+  onShow: function () {
     console.log('App Show')
   },
-  onHide: function() {
+  onHide: function () {
     console.log('App Hide')
   }
 }
@@ -50,5 +51,8 @@ export default {
 /*每个页面公共css */
 @import "colorui/main.css";
 @import "colorui/icon.css";
-@import "styles/app.css";
+</style>
+
+<style lang="scss">
+@import "styles/app.scss";
 </style>

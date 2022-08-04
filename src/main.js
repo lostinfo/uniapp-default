@@ -1,28 +1,12 @@
 import Vue from 'vue'
-import App from './App'
-import store from './store'
+import App from '@/App'
+import store from '@/store'
 
-import http from '@/utils/http_weixin'
-Vue.prototype.$http = http
+import filters from "@/utils/filters"
 
-// import cuCustom from '@/colorui/components/cu-custom.vue'
-// Vue.component('cu-custom', cuCustom)
-
-import helper from "@/utils/helper"
-
-Vue.filter('getPrice', function (price) {
-  price = price || 0
-  return price.toFixed(2)
-})
-
-Vue.filter('getAbsPrice', function (price) {
-  price = price || 0
-  return Math.abs(price).toFixed(2)
-})
-
-Vue.filter('getPath', function (url) {
-  return helper.getUrl(url)
-})
+for (let key in filters) {
+  Vue.filter(key, filters[key])
+}
 
 Vue.config.productionTip = false
 

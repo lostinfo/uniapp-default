@@ -1,6 +1,9 @@
-// const baseURL = 'https://app.localhost'
-const baseURL = 'http://app.localhost'
+let BASE_URL
+if (process.env.NODE_ENV === 'development') {
+  BASE_URL = 'http://app/localhost'
+} else {
+  BASE_URL = 'https://app.com'
+}
 
-const apiURL = baseURL + '/api'
-
-export { baseURL, apiURL }
+const API_URL = BASE_URL + '/api'
+export {BASE_URL, API_URL}

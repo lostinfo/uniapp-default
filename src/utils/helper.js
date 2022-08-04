@@ -1,4 +1,4 @@
-import {baseURL} from "@/utils/config"
+import {BASE_URL} from "@/utils/config"
 
 export default {
   getUrl(url) {
@@ -8,7 +8,7 @@ export default {
     if (/^\/\/.+/.test(url)) {
       return url
     }
-    return baseURL + (/^\//.test(url) ? url : '/' + url)
+    return BASE_URL + (/^\//.test(url) ? url : '/' + url)
   },
   getUrlRelativePath(url) {
     let arrUrl = url.split("//")
@@ -27,10 +27,10 @@ export default {
     return ''
   },
   getUrlParam(url, name) {
-    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    let r = url.match(reg);
+    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+    let r = url.match(reg)
     if (r != null) {
-      return unescape(r[2]);
+      return unescape(r[2])
     }
     return null;
   },
@@ -52,4 +52,44 @@ export default {
       })
     }
   },
+  wait400() {
+    return new Promise((resolve, reject) => {
+      let sh = setInterval(() => {
+        clearInterval(sh)
+        resolve()
+      }, 400)
+    })
+  },
+  wechatPay(params) {
+    return new Promise((resolve, reject) => {
+      uni.requestPayment({
+        timeStamp: params.timeStamp,
+        nonceStr: params.nonceStr,
+        package: params.package,
+        signType: params.signType,
+        paySign: params.paySign,
+        success: (res2) => {
+          uni.showToast({
+            title: '支付成功',
+          })
+          resolve()
+        },
+        fail: (err) => {
+          if (err.errMsg == 'requestPayment:fail cancel') {
+            uni.showToast({
+              icon: 'none',
+              title: '取消支付',
+            })
+            reject()
+          } else {
+            uni.showToast({
+              icon: 'none',
+              title: '调用支付失败',
+            })
+            reject(err)
+          }
+        }
+      })
+    })
+  }
 }
